@@ -1,0 +1,34 @@
+{
+  "name": "joey-overby/advent-of-code-2019",
+  "description": "Advent of Code 2019 Edition",
+  "authors": [
+    {
+      "name": "Joey Overby"
+    }
+  ],
+  "autoload": {
+    "psr-4" : {
+      "AdventOfCode2019\\" : ["php"]
+    }
+  },
+
+  "repositories" : [
+    {
+      "type" : "vcs",
+      "url" : "https://github.com/joeyoverby/PHPHelpers.git"
+    }
+  ],
+
+  "require" : {
+    "joey-overby/php-helpers" : "dev-master"
+  },
+
+  "require-dev": {
+    "phpunit/phpunit": "~8"
+  },
+  "config" : {
+    "discard-changes": true
+  }
+
+}
+
