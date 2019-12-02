@@ -17,6 +17,8 @@ use JoeyOverby\PHPHelpers\PHPHelpers;
  *
  */
 class SolutionDay01 extends DailySolution {
+    public const PART_1_ARRAY_KEY = "Part1Total";
+    public const PART_2_ARRAY_KEY = "Part2Total";
     
     /**
      * SolutionDay01 constructor.
@@ -35,15 +37,21 @@ class SolutionDay01 extends DailySolution {
         /** @var string[] $inputWeights */
         $inputWeights = PHPHelpers::readFileIntoArray($this->getInputFilePath());
         
-        $runningTotal = 0;
+        $toReturn = [];
+        
+        $part1Total = 0;
+        $part2Total = 0;
+        
         foreach($inputWeights as $moduleMass) {
-            $runningTotal += $this->calculateFuelRequired(intval($moduleMass));
+            $part1Total += $this->calculateFuelRequired(intval($moduleMass));
+            $part2Total += $this->calculateFuelRequiredIncludingItsFuel(intval($moduleMass));
         }
+        $toReturn[self::PART_1_ARRAY_KEY] = $part1Total;
+        $toReturn[self::PART_2_ARRAY_KEY] = $part2Total;
         
-        //For Part 2
         
         
-        return $runningTotal;
+        return $toReturn;
     }
     
     /**
@@ -69,7 +77,12 @@ class SolutionDay01 extends DailySolution {
      */
     protected function calculateFuelRequiredIncludingItsFuel(int $moduleMass) : int {
         $fuelRequired = intval(floor($moduleMass / 3) - 2);
-        return $fuelRequired;
+        
+        if($fuelRequired <= 0){
+            return 0; //Base Case
+        } else{
+            return $fuelRequired + $this->calculateFuelRequiredIncludingItsFuel($fuelRequired);
+        }
     }
     
     
@@ -82,4 +95,7 @@ class SolutionDay01 extends DailySolution {
 
 $solver   = new SolutionDay01();
 $solution = $solver->run();
-echo "Solution: " . $solution;
+
+foreach($solution as $key => $value){
+    echo $key . ": " . $value . PHP_EOL;
+}
