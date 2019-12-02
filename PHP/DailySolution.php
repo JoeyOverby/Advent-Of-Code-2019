@@ -9,6 +9,9 @@ abstract class DailySolution {
     
     public const INPUT_FILE_NAME = "input.txt";
     
+    public const PART_1_ARRAY_KEY = "Part1Total";
+    public const PART_2_ARRAY_KEY = "Part2Total";
+    
     /** Input file path */
     protected ?string $inputFilePath = null;
     

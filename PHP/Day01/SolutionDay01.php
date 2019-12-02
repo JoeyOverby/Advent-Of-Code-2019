@@ -17,8 +17,6 @@ use JoeyOverby\PHPHelpers\PHPHelpers;
  *
  */
 class SolutionDay01 extends DailySolution {
-    public const PART_1_ARRAY_KEY = "Part1Total";
-    public const PART_2_ARRAY_KEY = "Part2Total";
     
     /**
      * SolutionDay01 constructor.
